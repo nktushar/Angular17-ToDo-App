@@ -38,25 +38,15 @@
   </div>
   <div class="row pt-4">
     <div class="col">
-      <button class="btn btn-primary btn-sm mx-1">Filter By Tags</button>
-      <button class="btn btn-secondary btn-sm mx-1">Show All</button>
-      <button class="btn btn-secondary btn-sm mx-1">Show Completed</button>
+      <button (click)="setFilter('tags')" [ngClass]="filterType == 'tags' ? 'btn-primary' : 'btn-secondary'" class="btn  btn-sm mx-1">Filter By Tags</button>
+      <button (click)="setFilter('all')" [ngClass]="filterType == 'all' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show All</button>
+      <button (click)="setFilter('completed')" [ngClass]="filterType == 'completed' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show Completed</button>
+      <button (click)="setFilter('incomplete')" [ngClass]="filterType == 'incomplete' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show Incomplete</button>
     </div>
   </div>
-  <div class="row pt-4">
+  <div *ngIf="filterType == 'tags'" class="row pt-4">
     <div class="col">
-      <button class="btn btn-secondary btn-sm mx-1">Tags Group</button>
-      <button class="btn btn-secondary btn-sm mx-1">default</button>
-      <button class="btn btn-secondary btn-sm mx-1">Hobby</button>
-      <button class="btn btn-success btn-sm mx-1">Holiday</button>
-      <button class="btn btn-success text-light btn-sm mx-1">Financial</button>
-      <button class="btn btn-secondary btn-sm mx-1">Fun</button>
-      <button class="btn btn-success btn-sm mx-1">Emergency</button>
-      <button class="btn btn-secondary btn-sm text-light mx-1">Health</button>
-      <button class="btn btn-secondary btn-sm mx-1">Work</button>
-      <button class="btn btn-secondary btn-sm mx-1">Education</button>
-      <button class="btn btn-secondary btn-sm mx-1">Social</button>
-      <button class="btn btn-secondary btn-sm mx-1">Travel</button>
+      <button *ngFor="let tag of tagsList" class="btn btn-secondary btn-sm mx-1">{{tag}}</button>
     </div>
   </div>
   <div class="row pt-3">
@@ -86,13 +76,7 @@
             </td>
             <td>{{task.dueDate | date:'dd-MMM-YYYY'}}</td>
             <td class="text-center">
-              <button class="btn btn-warning btn-sm rounded-btn mx-1">Health</button>
-              <button class="btn btn-secondary btn-sm rounded-btn mx-1">
-                fitness
-              </button>
-              <button class="btn btn-success btn-sm rounded-btn mx-1">
-                default
-              </button>
+              <button *ngFor="let tag of getArrayFromCommaSeparatedString(task.tags)" class="btn btn-warning btn-sm rounded-btn mx-1">{{tag}}</button>
             </td>
           </tr>
         </tbody>

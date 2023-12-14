@@ -13,6 +13,9 @@ import { CommonModule } from '@angular/common';
 export class TodolistComponent  {
   taskObj: Task;
   taskList: Task[] = [];
+  tagsList: string[] = ['Work', 'Personal', 'Shopping', 'Others'];
+  filterType: string = '';
+  selectedTag: string = '';
 
   constructor() {
     this.taskObj = new Task();
@@ -36,6 +39,15 @@ export class TodolistComponent  {
     this.taskList.splice(index, 1);
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   } 
+
+  getArrayFromCommaSeparatedString(str: string): string[] {
+    const arr = str.split(',');
+    return arr;
+  }
+
+  setFilter(filterType: string): void {
+    this.filterType = filterType;
+  }
 
 }
 export class Task {

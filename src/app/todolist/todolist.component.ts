@@ -32,6 +32,11 @@ export class TodolistComponent  {
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   }
 
+  onRemove(index:number) {
+    this.taskList.splice(index, 1);
+    localStorage.setItem('todoApp', JSON.stringify(this.taskList))
+  } 
+
 }
 export class Task {
   taskName: string;

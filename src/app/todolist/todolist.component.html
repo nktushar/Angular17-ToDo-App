@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-6">{{task.taskName}}</div>
                 <div class="col-4 text-end">
-                  <i class="fa fa-close px-3 text-danger"></i>
+                  <i (click)="onRemove(sr)" class="fa fa-close px-3 text-danger"></i>
                 </div>
               </div>
             </td>

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class TodolistComponent  {
   taskObj: Task;
   taskList: Task[] = [];
+  originalTaskList: Task[] = [];
   tagsList: string[] = ['Work', 'Personal', 'Shopping', 'Others'];
   filterType: string = '';
   selectedTag: string = '';
@@ -22,21 +23,25 @@ export class TodolistComponent  {
     const localData = localStorage.getItem('todoApp');
     if (localData != null) {
       this.taskList = JSON.parse(localData);
+      this.originalTaskList = this.taskList;
     }
   }
   createNewTask(): void {
     const task = JSON.stringify(this.taskObj);
     const parseTask = JSON.parse(task);
     this.taskList.push(parseTask);
+    this.originalTaskList = this.taskList;
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   }
 
   onComplete(): void {
+    this.originalTaskList = this.taskList;
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   }
 
   onRemove(index:number) {
     this.taskList.splice(index, 1);
+    this.originalTaskList = this.taskList;
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   } 
 
@@ -47,13 +52,28 @@ export class TodolistComponent  {
 
   setFilter(filterType: string): void {
     this.filterType = filterType;
+    this.selectedTag = '';
+    if(filterType === 'completed') {
+      this.taskList = this.originalTaskList.filter((task) => {
+        return task.isCompleted;
+      });
+    }
+    else if(filterType === 'incomplete') {
+      this.taskList = this.originalTaskList.filter((task) => {
+        return !task.isCompleted;
+      });
+    } 
+    else {
+      this.taskList = this.originalTaskList;
+    }
+
   }
 
-  filterByTag(): void {
-    const filteredList = this.taskList.filter((task) => {
+  filterByTag() {
+    const filteredList = this.originalTaskList.filter((task) => {
       return task.tags.includes(this.selectedTag);
     });
-    console.log(filteredList);
+    this.taskList = filteredList;
   }
 
 }

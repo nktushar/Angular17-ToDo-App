@@ -46,7 +46,7 @@
   </div>
   <div *ngIf="filterType == 'tags'" class="row pt-4">
     <div class="col">
-      <button *ngFor="let tag of tagsList" class="btn btn-secondary btn-sm mx-1">{{tag}}</button>
+      <button *ngFor="let tag of tagsList" (click)="selectedTag = tag" [ngClass]="selectedTag == tag ? 'btn-warning' : 'btn-secondary'" (click)="filterByTag()" class="btn btn-sm mx-1">{{tag}}</button>
     </div>
   </div>
   <div class="row pt-3">

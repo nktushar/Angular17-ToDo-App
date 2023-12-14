@@ -49,6 +49,13 @@ export class TodolistComponent  {
     this.filterType = filterType;
   }
 
+  filterByTag(): void {
+    const filteredList = this.taskList.filter((task) => {
+      return task.tags.includes(this.selectedTag);
+    });
+    console.log(filteredList);
+  }
+
 }
 export class Task {
   taskName: string;

@@ -38,25 +38,25 @@
   </div>
   <div class="row pt-4">
     <div class="col">
-      <button class="btn btn-primary btn-sm">Filter By Tags</button>
-      <button class="btn btn-secondary btn-sm">Show All</button>
-      <button class="btn btn-secondary btn-sm">Show Completed</button>
+      <button class="btn btn-primary btn-sm mx-1">Filter By Tags</button>
+      <button class="btn btn-secondary btn-sm mx-1">Show All</button>
+      <button class="btn btn-secondary btn-sm mx-1">Show Completed</button>
     </div>
   </div>
   <div class="row pt-4">
     <div class="col">
-      <button class="btn btn-secondary btn-sm">Tags Group</button>
-      <button class="btn btn-secondary btn-sm">default</button>
-      <button class="btn btn-secondary btn-sm">Hobby</button>
-      <button class="btn btn-success btn-sm">Holiday</button>
-      <button class="btn btn-success text-light btn-sm">Financial</button>
-      <button class="btn btn-secondary btn-sm">Fun</button>
-      <button class="btn btn-success btn-sm">Emergency</button>
-      <button class="btn btn-secondary btn-sm text-light">Health</button>
-      <button class="btn btn-secondary btn-sm">Work</button>
-      <button class="btn btn-secondary btn-sm">Education</button>
-      <button class="btn btn-secondary btn-sm">Social</button>
-      <button class="btn btn-secondary btn-sm">Travel</button>
+      <button class="btn btn-secondary btn-sm mx-1">Tags Group</button>
+      <button class="btn btn-secondary btn-sm mx-1">default</button>
+      <button class="btn btn-secondary btn-sm mx-1">Hobby</button>
+      <button class="btn btn-success btn-sm mx-1">Holiday</button>
+      <button class="btn btn-success text-light btn-sm mx-1">Financial</button>
+      <button class="btn btn-secondary btn-sm mx-1">Fun</button>
+      <button class="btn btn-success btn-sm mx-1">Emergency</button>
+      <button class="btn btn-secondary btn-sm text-light mx-1">Health</button>
+      <button class="btn btn-secondary btn-sm mx-1">Work</button>
+      <button class="btn btn-secondary btn-sm mx-1">Education</button>
+      <button class="btn btn-secondary btn-sm mx-1">Social</button>
+      <button class="btn btn-secondary btn-sm mx-1">Travel</button>
     </div>
   </div>
   <div class="row pt-3">
@@ -76,7 +76,7 @@
             <td>
               <div class="row">
                 <div class="col-1">
-                  <input type="checkbox" />
+                  <input (change)="onComplete()" [(ngModel)]="task.isCompleted" type="checkbox" />
                 </div>
                 <div class="col-6">{{task.taskName}}</div>
                 <div class="col-4 text-end">
@@ -86,11 +86,11 @@
             </td>
             <td>{{task.dueDate | date:'dd-MMM-YYYY'}}</td>
             <td class="text-center">
-              <button class="btn btn-warning btn-sm rounded-btn">Health</button>
-              <button class="btn btn-secondary btn-sm rounded-btn">
+              <button class="btn btn-warning btn-sm rounded-btn mx-1">Health</button>
+              <button class="btn btn-secondary btn-sm rounded-btn mx-1">
                 fitness
               </button>
-              <button class="btn btn-success btn-sm rounded-btn">
+              <button class="btn btn-success btn-sm rounded-btn mx-1">
                 default
               </button>
             </td>

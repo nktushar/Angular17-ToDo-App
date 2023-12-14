@@ -11,29 +11,16 @@ import { CommonModule } from '@angular/common';
 })
 
 export class TodolistComponent  {
-  
   taskObj: Task;
   taskList: Task[] = [];
 
   constructor() {
     this.taskObj = new Task();
-    // const localData = localStorage.getItem('todoApp');
-    // if (localData != null) {
-    //   this.taskList = JSON.parse(localData);
-    // }
-    if(typeof localStorage === 'undefined'){
-      console.log("Your browser does not support local storage");
-    }
-
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      console.log('Code is running in the browser.');
-      // Browser-specific code
-    } else {
-      console.log('Code is not running in the browser.');
-      // Non-browser environment (possibly server-side)
+    const localData = localStorage.getItem('todoApp');
+    if (localData != null) {
+      this.taskList = JSON.parse(localData);
     }
   }
-
   createNewTask(): void {
     const task = JSON.stringify(this.taskObj);
     const parseTask = JSON.parse(task);
@@ -41,17 +28,39 @@ export class TodolistComponent  {
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
   }
 
-}
+  onComplete(): void {
+    localStorage.setItem('todoApp', JSON.stringify(this.taskList))
+  }
 
+}
 export class Task {
   taskName: string;
   dueDate: string;
   tags: string;
+  isCompleted: boolean;
   constructor() {
     this.taskName = "";
     this.dueDate = "";
     this.tags = "";
+    this.isCompleted = false;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
@@ -74,5 +83,3 @@ export class Task {
   //   console.log(myArrayFiltered);
   //   debugger; // You can remove 'debugger' if it's not necessary
   // }
-  
-}

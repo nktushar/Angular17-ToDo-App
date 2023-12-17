@@ -1,7 +1,6 @@
-<div class="container pt-3">
-  <div class="mt-2 p-1 bg-primary text-white rounded text-center">
-    <h1>ToDo App</h1>
-    <p>Advance Version With Filter</p>
+<div class="container pt-3"> 
+  <div class="mt-2 p-1 gradient-bg text-white rounded text-center">
+    <h1 class="py-4">ToDo App</h1>
   </div>
   <div class="row">
     <div class="col-12 pt-2">
@@ -31,17 +30,17 @@
       />
     </div>
     <div class="col">
-      <button class="btn btn-success" (click)="createNewTask()">
+      <button class="btn gradient-bg" (click)="createNewTask()">
         Add Task
       </button>
     </div>
   </div>
   <div class="row pt-4">
     <div class="col">
-      <button (click)="setFilter('tags')" [ngClass]="filterType == 'tags' ? 'btn-primary' : 'btn-secondary'" class="btn  btn-sm mx-1">Filter By Tags</button>
-      <button (click)="setFilter('all')" [ngClass]="filterType == 'all' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show All</button>
-      <button (click)="setFilter('completed')" [ngClass]="filterType == 'completed' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show Completed</button>
-      <button (click)="setFilter('incomplete')" [ngClass]="filterType == 'incomplete' ? 'btn-primary' : 'btn-secondary'" class="btn btn-sm mx-1">Show Incomplete</button>
+      <button (click)="setFilter('tags')" [ngClass]="filterType == 'tags' ? 'btn-success' : 'btn-secondary'" class="btn  btn-sm mx-1">Filter By Tags</button>
+      <button (click)="setFilter('all')" [ngClass]="filterType == 'all' ? 'btn-success' : 'btn-secondary'" class="btn btn-sm mx-1">Show All</button>
+      <button (click)="setFilter('completed')" [ngClass]="filterType == 'completed' ? 'btn-success' : 'btn-secondary'" class="btn btn-sm mx-1">Show Completed</button>
+      <button (click)="setFilter('incomplete')" [ngClass]="filterType == 'incomplete' ? 'btn-success' : 'btn-secondary'" class="btn btn-sm mx-1">Show Incomplete</button>
     </div>
   </div>
   <div *ngIf="filterType == 'tags'" class="row pt-4">
@@ -58,6 +57,7 @@
             <th><strong>Task Name</strong></th>
             <th><strong>Due Date</strong></th>
             <th class="text-center"><strong>Tags</strong></th>
+            <th><strong>Remove</strong></th>
           </tr>
         </thead>
         <tbody>
@@ -69,14 +69,17 @@
                   <input (change)="onComplete()" [(ngModel)]="task.isCompleted" type="checkbox" />
                 </div>
                 <div class="col-6">{{task.taskName}}</div>
-                <div class="col-4 text-end">
-                  <i (click)="onRemove(sr)" class="fa fa-close px-3 text-danger"></i>
-                </div>
+                
               </div>
             </td>
             <td>{{task.dueDate | date:'dd-MMM-YYYY'}}</td>
             <td class="text-center">
               <button *ngFor="let tag of getArrayFromCommaSeparatedString(task.tags)" class="btn btn-warning btn-sm rounded-btn mx-1">{{tag}}</button>
+            </td>
+            <td>
+              <div class="col-4 text-end">
+                <i (click)="onRemove(sr)" class="fa fa-close px-3 text-danger"></i>
+              </div>
             </td>
           </tr>
         </tbody>

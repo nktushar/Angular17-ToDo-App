@@ -14,7 +14,7 @@ export class TodolistComponent  {
   taskObj: Task;
   taskList: Task[] = [];
   originalTaskList: Task[] = [];
-  tagsList: string[] = ['Work', 'Personal', 'Shopping', 'Others'];
+  tagsList: string[] = ['Work', 'Meeting', 'Study', 'Entertainment', 'Meal', 'Personal', 'Shopping', 'Others'];
   filterType: string = '';
   selectedTag: string = '';
 
@@ -29,9 +29,11 @@ export class TodolistComponent  {
   createNewTask(): void {
     const task = JSON.stringify(this.taskObj);
     const parseTask = JSON.parse(task);
-    this.taskList.push(parseTask);
-    this.originalTaskList = this.taskList;
+    this.originalTaskList.push(parseTask);
+    this.taskList = this.originalTaskList;
     localStorage.setItem('todoApp', JSON.stringify(this.taskList))
+    this.taskObj = new Task();
+    this.filterType = '';
   }
 
   onComplete(): void {

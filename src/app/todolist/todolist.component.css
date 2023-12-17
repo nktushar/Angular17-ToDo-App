@@ -5,3 +5,8 @@
 .rounded-btn {
   border-radius: 20px;
 }
+
+.gradient-bg {
+  background: linear-gradient(to right, #4fab43, #147246);
+  color: white;
+}

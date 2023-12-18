@@ -74,7 +74,7 @@
             </td>
             <td>{{task.dueDate | date:'dd-MMM-YYYY'}}</td>
             <td class="text-center">
-              <button *ngFor="let tag of getArrayFromCommaSeparatedString(task.tags)" class="btn btn-warning btn-sm rounded-btn mx-1">{{tag}}</button>
+              <button *ngFor="let tag of getArrayFromCommaSeparatedString(task.tags)" class="btn tag-gradient-bg btn-sm rounded-btn mx-1">{{tag}}</button>
             </td>
             <td>
               <div class="col-4 text-end">

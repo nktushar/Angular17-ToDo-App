@@ -10,3 +10,7 @@
   background: linear-gradient(to right, #4fab43, #147246);
   color: white;
 }
+
+.tag-gradient-bg {
+  background: linear-gradient(to right, #ffe371, #f8ae24);
+}
